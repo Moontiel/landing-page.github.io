@@ -1,0 +1,787 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// variables para definir color de fondo al body
+$bgPrimaryBodyColor: linear-gradient(
+    90deg,
+    rgba(9, 6, 83, 1) 50%,
+    rgba(3, 4, 50, 1) 100%
+);
+$bgSecondaryBodyColor: #fff;
+
+// variables para definir color de fondo
+$bgPrimaryColor: #090653;
+$bgSecondaryColor: #ffc801;
+$bgTertiaryColor: #ffffff;
+
+// variables para definir color de fuente
+$textPrimaryColor: #ffffff;
+$textSecondaryColor: #385a64;
+$textTertiaryColor: #ffc801;
+
+body {
+    background-color: $bgPrimaryColor;
+    background: $bgPrimaryBodyColor;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+
+    /*
+        js_skin_light: cuando tag-body tiene esta clase añadida 
+        con javascript modificamos su color de fondo y seleccionamos
+        otros elementos html para ajustar sus propiedades y que se 
+        adapten al skin-ligth
+    */
+    &.js_skin_light {
+        background: $bgSecondaryBodyColor;
+
+        .container_box header {
+            &.js_header_scroll {
+                background: $bgTertiaryColor;
+                // box-shadow: 0 0 8px 0 #ccc;
+            }
+        }
+
+        .container_box header .header_container .header_flex nav.js_show_menu {
+            background: $bgTertiaryColor;
+        }
+
+        .container_box header .header_container .header_flex nav ul li a {
+            color: $textSecondaryColor;
+
+            &:hover {
+                color: $textTertiaryColor;
+            }
+
+            &.js_active_link {
+                color: $textTertiaryColor;
+            }
+        }
+
+        .container_box header .header_container .header_flex .brand_box h2 {
+            color: $textSecondaryColor;
+        }
+
+        .container_box main .main_container .main_flex .banner_container {
+            color: $textSecondaryColor;
+        }
+
+        .container_box footer .icon_box a svg {
+            fill: $textSecondaryColor;
+
+            &:hover {
+                fill: $textTertiaryColor;
+            }
+        }
+
+        .container_box footer p {
+            color: $textSecondaryColor;
+        }
+    }
+}
+
+/*
+    container_box: definimos un espaciado en el eje-X 
+    para separar este contenedor de los bordes de la 
+    ventana
+*/
+.container_box {
+    padding: 0 160px;
+
+    /*
+        dispositivos menores a 1199px: modificamos el 
+        espaciado en el eje-X de este elemento para 
+        esta medida
+    */
+    @media (max-width: 1199px) {
+        padding: 0 80px;
+    }
+
+    /*
+        dispositivos menores a 539px: modificamos el 
+        espaciado en el eje-X de este elemento para 
+        esta medida
+    */
+    @media (max-width: 539px) {
+        padding: 0 25px;
+    }
+
+    /*
+        tag-header: definimos position:fixed 
+        junto con sus propiedades left, right, top y z-index 
+        para posicionar este elemento, finalmente definimos un 
+        espaciado en el eje-X
+    */
+    header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 9;
+        padding: 0 80px;
+
+        /*
+            cuando tag-header tiene la clase .js_header_scroll 
+            añadida con javascript modificamos el color de fondo
+            y añadimos una sombra
+        */
+        &.js_header_scroll {
+            background: $bgPrimaryBodyColor;
+            box-shadow: 0 0 8px 0 #ccc;
+        }
+
+        /*
+            dispositivos menores a 539px: modificamos el espaciado 
+            en el eje-X para esta medida
+        */
+        @media (max-width: 539px) {
+            padding: 0 25px;
+        }
+
+        /*
+            header_container  
+        */
+        .header_container {
+            /*
+                header_flex: definimos flexbox y su propiedad 
+                align-items junto con una altura que me permite
+                centrar de manera vertical los elementos que este
+                contiene
+            */
+            .header_flex {
+                display: flex;
+                height: 80px;
+                align-items: center;
+
+                /*
+                    dispositivos mayores a 720px: definimos 
+                    justify-content para generar un espaciado 
+                    entre los elementos para esta medida 
+                */
+                @media (min-width: 720px) {
+                    justify-content: space-between;
+                }
+
+                /*
+                    tag-nav
+                */
+                nav {
+                    /*
+                        dispositivos menores a 719px: definimos 
+                        position: absolute junto con sus propiedades 
+                        top, left y right para posicionar este elemento. 
+                        Tambien definimos un order: 2 para cambiar 
+                        este elemento de posicion y una altura de 100vh 
+                        para que tome toda la altura de la pantalla,
+                        finalmente con la propiedad translateX a -1000px 
+                        ocultamos el menu de navegacion
+                    */
+                    @media (max-width: 719px) {
+                        position: absolute;
+                        top: 80px;
+                        left: 0;
+                        right: 0;
+                        order: 2;
+                        height: 100vh;
+                        transform: translateX(-1000px);
+
+                        /*
+                            js_show_menu: cuando tag-nav tiene esta clase añadida
+                            desde javascript, añadimos un color de fondo y modificamos 
+                            el translateX a 0 para hacer vsible el menu de navegacion
+                        */
+                        &.js_show_menu {
+                            background-color: $bgPrimaryColor;
+                            background: $bgPrimaryBodyColor;
+                            transform: translateX(0);
+                        }
+                    }
+
+                    /*
+                        tag-ul
+                    */
+                    ul {
+                        /*
+                            dispositivos mayores a 720px: definimos 
+                            flexbox para poner el linea los elementos
+                            que este contiene
+                        */
+                        @media (min-width: 720px) {
+                            display: flex;
+                        }
+
+                        /*
+                            dispositivos menores a 719px: definimos 
+                            un espaciado personalizado en el eje-Y
+                        */
+                        @media (max-width: 719px) {
+                            text-align: center;
+                            padding: 30px 0;
+                        }
+
+                        /*
+                            tag-li
+                        */
+                        li {
+                            list-style: none;
+
+                            /*
+                                dispositivos menores a 719px: definimos
+                                un margen inferior para generar separacion
+                                entre estos elementos
+                            */
+                            @media (max-width: 719px) {
+                                margin-bottom: 22px;
+                            }
+
+                            /*
+                                dispositivos mayores a 720px: definimos
+                                un margen derecho para generar separacion
+                                entre estos elementos
+                            */
+                            @media (min-width: 720px) {
+                                margin-right: 22px;
+                            }
+
+                            /*
+                                tag-a
+                            */
+                            a {
+                                text-decoration: none;
+                                color: $textPrimaryColor;
+                                font-size: 24px;
+                                font-weight: 700;
+                                letter-spacing: 0.4px;
+
+                                /*
+                                    cuando hacemos :hover sobre tag-a modificamos 
+                                    el color de la fuente
+                                */
+                                &:hover {
+                                    color: $textTertiaryColor;
+                                }
+
+                                /*
+                                    js_active_link: cuando tag-a tiene 
+                                    esta clase añadida desde javascript, 
+                                    añadimos un color de fuente y un filtro 
+                                */
+                                &.js_active_link {
+                                    color: $textTertiaryColor;
+                                    filter: drop-shadow(
+                                        0 0 10px $textTertiaryColor
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
+
+                /*
+                    brand_box
+                */
+                .brand_box {
+                    /*
+                        dispositivos menores a 719px: definimos flexbox 
+                        junto con su propiedad justify-content y un ancho 
+                        para generar un espaciado entre los elementos para
+                        esta medida, finalmente definimos un order: 1 para
+                        cambiar este elemento de posicion
+                    */
+                    @media (max-width: 719px) {
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-between;
+                        order: 1;
+                    }
+
+                    /*
+                        tag-h2
+                    */
+                    h2 {
+                        color: $textPrimaryColor;
+
+                        /*
+                            tag-span
+                        */
+                        span {
+                            color: $textTertiaryColor;
+                            filter: drop-shadow(0 0 10px $textTertiaryColor);
+                        }
+                    }
+
+                    /*
+                        tag-svg
+                    */
+                    svg {
+                        /*
+                            dispositivos menores a 719px: definimos vertical-align: top 
+                            para remover un espaciado que genera el navegador en los
+                            iconos
+                        */
+                        @media (max-width: 719px) {
+                            vertical-align: top;
+                            fill: $textTertiaryColor;
+                            filter: drop-shadow(0 0 10px $textTertiaryColor);
+                            width: 34px;
+                            height: 34px;
+                            cursor: pointer;
+                        }
+
+                        /*
+                            dispositivos mayores a 720px: definimos display: none 
+                            para remover el icno del menu en esta medida
+                        */
+                        @media (min-width: 720px) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+        flexbox_skins: definimos position: fixed y sus propiedades
+        top, right y z-index para posicionar este elemento, con 
+        flexbox con sus propiedades justify-content y align-items 
+        mas las propiedades width y height centramos de manera vertical 
+        y horizontal los elementos que este contiene 
+    */
+    .skin_flex {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 8;
+        display: flex;
+        width: 50px;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+
+        /*
+            dispositivos mayores a 1200px: modificamos el ancho del
+            este contenedor
+        */
+        @media (min-width: 1200px) {
+            width: 80px;
+        }
+
+        /*
+            skin_box
+        */
+        .skin_box {
+            /*
+                tag-span: definimos display: block junto a width y
+                height para hacer visibles los botones creados para
+                cambiar el color de fondo del sitio web 
+            */
+            span {
+                display: block;
+                width: 24px;
+                height: 24px;
+                border-radius: 100%;
+                border: 2px solid #ccc;
+                cursor: pointer;
+                transition: transform 0.2s;
+
+                /*
+                    cuando hacemos :hover sobre la tag-span, añadimos un
+                    transform: scale para reducir el tamaño de la tag-span
+                */
+                &:hover {
+                    transform: scale(0.8);
+                }
+            }
+
+            /*
+                skin_dark: definimos un margen en la parte inferior para 
+                generar espaciado
+            */
+            .skin_dark {
+                background: $bgPrimaryBodyColor;
+                margin-bottom: 12px;
+            }
+
+            /*
+                skin_light
+            */
+            .skin_light {
+                background-color: $bgTertiaryColor;
+            }
+        }
+    }
+
+    /*
+        tag-main
+    */
+    main {
+        /*
+            main_container
+        */
+        .main_container {
+            /*
+                main_flex
+            */
+            .main_flex {
+                /*
+                    dispositivos mayores a 1200px: definimos flexbox
+                    junto con su propiedad alig-items para centrar
+                    de manera vertical los elementos que este contiene,
+                    finalmente definimos un margen superior para generar
+                    sepacion
+                */
+                @media (min-width: 1200px) {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 80px;
+                }
+
+                /*
+                    banner_container
+                */
+                .banner_container {
+                    color: $textPrimaryColor;
+
+                    /*
+                        dispositivos mayores a 720px y menores a 1199px: 
+                        definimos un ancho maximos para este elemento
+                    */
+                    @media (min-width: 720px) and (max-width: 1199px) {
+                        max-width: 585px;
+                    }
+
+                    /*
+                        dispositivos mayores a 1200px: definimos order: 1
+                        para cambiar de posicion este elemento
+                    */
+                    @media (min-width: 1200px) {
+                        order: 1;
+                    }
+
+                    /*
+                        title_box: definimos psoition: relative debido a 
+                        que uno de sus elementos hijos tiene definido 
+                        position absolute, finalmente flexbox para poner 
+                        en linea los elementos que este contiene
+                    */
+                    .title_box {
+                        position: relative;
+                        display: flex;
+
+                        /*
+                            tag-h1
+                        */
+                        h1 {
+                            font-size: 54px;
+                            letter-spacing: 0.7px;
+                            font-weight: 800;
+
+                            /*
+                                dispositivos menores a 467px: modificamos 
+                                el tamaño de fuente
+                            */
+                            @media (max-width: 577px) {
+                                font-size: 46px;
+                            }
+
+                            /*
+                                dispositivos menores a 467px: modificamos 
+                                el tamaño de fuente
+                            */
+                            @media (max-width: 408px) {
+                                font-size: 31px;
+                            }
+                        }
+
+                        /*
+                            tag-img
+                        */
+                        img {
+                            /*
+                                dispositivos menores a 749px: definimos
+                                display: none para remover la imagen de la vista
+                            */
+                            @media (max-width: 749px) {
+                                display: none;
+                            }
+
+                            /*
+                                dispositivos mayores a 1200px y menores a 1265px: 
+                                definimos display: none para remover la imagen de la vista
+                            */
+                            @media (min-width: 1200px) and (max-width: 1365px) {
+                                display: none;
+                            }
+
+                            /*
+                                dispositivos mayores a 720px: definimos
+                                position: absolute junto con sus propiedades 
+                                top y right para posicionar este elemento
+                            */
+                            @media (min-width: 720px) {
+                                position: absolute;
+                                top: -48px;
+                                right: 0;
+                                filter: drop-shadow(0 0 5px $bgTertiaryColor);
+                                width: 160px;
+                                height: 160px;
+                                animation: postmanFloat 2s infinite linear;
+
+                                /*
+                                    definimos una animacion que se encarga de 
+                                    transladar levemente la imagen
+                                */
+                                @keyframes postmanFloat {
+                                    0% {
+                                        transform: translateY(0px);
+                                    }
+                                    50% {
+                                        transform: translateY(-10px);
+                                    }
+                                    100% {
+                                        transform: translateY(0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    /*
+                        tag-p: definimos un margen personalizados en 
+                        el eje-Y para generar separacion
+                    */
+                    p {
+                        font-size: 24px;
+                        line-height: 1.4;
+                        margin: 24px 0 54px;
+
+                        /*
+                            dispositivos menores a 467px: modificamos 
+                            el tamaño de fuente
+                        */
+                        @media (max-width: 467px) {
+                            font-size: 21px;
+                        }
+                    }
+
+                    /*
+                        btn_box
+                    */
+                    .btn_box {
+                        /*
+                            tag-a: para convertir un enlace en un boton, 
+                            es importante definirle un display: inline-flex 
+                            mas las propiedades width, justify-content, height 
+                            y  align-items. Estos dan tamaño al boton y  
+                            centran su contenido
+                        */
+                        a {
+                            text-decoration: none;
+                            display: inline-flex;
+                            width: 240px;
+                            justify-content: space-evenly;
+                            height: 55px;
+                            align-items: center;
+                            background-color: $bgSecondaryColor;
+                            filter: drop-shadow(0 0 10px $bgSecondaryColor);
+                            color: $textPrimaryColor;
+                            font-size: 22px;
+                            font-weight: 700;
+                            letter-spacing: 0.5px;
+                            border-radius: 30px;
+
+                            /*
+                                cuando hacemos :hover sobre tag-a
+                                modificamos su color de fondo
+                            */
+                            &:hover {
+                                background-color: rgba(245, 180, 0, 1);
+                            }
+
+                            /*
+                                tag-svg: definimmos un vertical-align para remover 
+                                un espaciado que genera el navegador en los iconos
+                            */
+                            svg {
+                                vertical-align: top;
+                                fill: $textPrimaryColor;
+                                width: 26px;
+                                height: 26px;
+                            }
+                        }
+                    }
+                }
+
+                /*
+                    box_img
+                */
+                .img_box {
+                    text-align: center;
+
+                    /*
+                        dispositivos menores a 1199px: definimos margen 
+                        personalizado en el eje-Y para generar separacion
+                    */
+                    @media (max-width: 1199px) {
+                        margin: 100px 0 50px;
+                    }
+
+                    /*
+                        dispositivos mayores a 1200px: definimos order: 2
+                        para cambiar de posicion este elemento
+                    */
+                    @media (min-width: 1200px) {
+                        order: 2;
+                    }
+
+                    /*
+                        tag-img: definimos vertical-align: top para remover
+                        un espaciado que genera el navegador en las imagenes,
+                        finalmente definimos la propiedad object-fit: cover 
+                        para ajustar la imagen a su contenedor padre
+                    */
+                    img {
+                        vertical-align: top;
+                        object-fit: cover;
+                        width: 460px;
+                        height: 100%;
+
+                        /*
+                            dispositivos menores a 749px: definimos una animacion 
+                            que se encarga de transladar levemente la imagen
+                        */
+                        @media (max-width: 749px) {
+                            animation: rocketFly2 2s infinite linear;
+
+                            @keyframes rocketFly2 {
+                                0% {
+                                    transform: translateY(0px);
+                                }
+                                50% {
+                                    transform: translateY(-10px);
+                                }
+                                100% {
+                                    transform: translateY(0);
+                                }
+                            }
+                        }
+
+                        /*
+                            dispositivos menores a 719px: modficamos el ancho
+                            de la imagen para esta medida
+                        */
+                        @media (max-width: 719px) {
+                            width: 100%;
+                        }
+
+                        /*
+                            dispositivos mayores a 750px: definimos una animacion 
+                            que se encarga de rotar levemente la imagen
+                        */
+                        @media (min-width: 750px) {
+                            animation: rocketFly 8s infinite linear;
+
+                            @keyframes rocketFly {
+                                0% {
+                                    transform: rotate(0deg);
+                                }
+                                25% {
+                                    transform: rotate(10deg);
+                                }
+                                50% {
+                                    transform: rotate(0deg);
+                                }
+                                75% {
+                                    transform: rotate(10deg);
+                                }
+                                100% {
+                                    transform: rotate(0deg);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+        tag-footer
+    */
+    footer {
+        text-align: center;
+
+        /*
+            dispositivos menores a 1199px: definimos un espaciado 
+            personalizado en el eje-Y para generar espaciado
+        */
+        @media (max-width: 1199px) {
+            padding: 100px 0 30px;
+        }
+
+        /*
+            icon_box: definimos un margen inferior para generar espaciado
+        */
+        .icon_box {
+            text-align: center;
+            margin-bottom: 12px;
+
+            /*
+                dispositivos menores a 1199px: modificamos el margen inferior
+            */
+            @media (max-width: 1199px) {
+                margin-bottom: 22px;
+            }
+
+            /*
+                tag-a: definimos un margen para generar espaciado
+            */
+            a {
+                text-decoration: none;
+                margin: 6px;
+
+                /*
+                    tag-svg: definimmos un vertical-align para remover 
+                    un espaciado que genera el navegador en los iconos
+                */
+                svg {
+                    vertical-align: top;
+                    fill: $textPrimaryColor;
+                    width: 28px;
+                    height: 28px;
+
+                    /*
+                        cuando hacemos :hover sobre tag-svg modificamos 
+                        el color de fondo y añadimos un filtro
+                    */
+                    &:hover {
+                        fill: $textTertiaryColor;
+                        filter: drop-shadow(0 0 4px $textTertiaryColor);
+                    }
+                }
+            }
+        }
+
+        /*
+            tag-p
+        */
+        p {
+            color: $textPrimaryColor;
+            font-size: 22px;
+            font-weight: 500;
+
+            /*
+                dispositivos menores a 585px: definimos un ancho 
+                maximo y un margen auto para centrar este elemento 
+                de manera horizontal
+            */
+            @media (max-width: 585px) {
+                max-width: 300px;
+                margin: auto;
+            }
+        }
+    }
+}

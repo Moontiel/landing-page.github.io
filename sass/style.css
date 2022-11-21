@@ -1,0 +1,794 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #090653;
+  background: linear-gradient(90deg, rgb(9, 6, 83) 50%, rgb(3, 4, 50) 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  /*
+      js_skin_light: cuando tag-body tiene esta clase añadida 
+      con javascript modificamos su color de fondo y seleccionamos
+      otros elementos html para ajustar sus propiedades y que se 
+      adapten al skin-ligth
+  */
+}
+body.js_skin_light {
+  background: #fff;
+}
+body.js_skin_light .container_box header.js_header_scroll {
+  background: #ffffff;
+}
+body.js_skin_light .container_box header .header_container .header_flex nav.js_show_menu {
+  background: #ffffff;
+}
+body.js_skin_light .container_box header .header_container .header_flex nav ul li a {
+  color: #385a64;
+}
+body.js_skin_light .container_box header .header_container .header_flex nav ul li a:hover {
+  color: #ffc801;
+}
+body.js_skin_light .container_box header .header_container .header_flex nav ul li a.js_active_link {
+  color: #ffc801;
+}
+body.js_skin_light .container_box header .header_container .header_flex .brand_box h2 {
+  color: #385a64;
+}
+body.js_skin_light .container_box main .main_container .main_flex .banner_container {
+  color: #385a64;
+}
+body.js_skin_light .container_box footer .icon_box a svg {
+  fill: #385a64;
+}
+body.js_skin_light .container_box footer .icon_box a svg:hover {
+  fill: #ffc801;
+}
+body.js_skin_light .container_box footer p {
+  color: #385a64;
+}
+
+/*
+    container_box: definimos un espaciado en el eje-X 
+    para separar este contenedor de los bordes de la 
+    ventana
+*/
+.container_box {
+  padding: 0 160px;
+  /*
+      dispositivos menores a 1199px: modificamos el 
+      espaciado en el eje-X de este elemento para 
+      esta medida
+  */
+  /*
+      dispositivos menores a 539px: modificamos el 
+      espaciado en el eje-X de este elemento para 
+      esta medida
+  */
+  /*
+      tag-header: definimos position:fixed 
+      junto con sus propiedades left, right, top y z-index 
+      para posicionar este elemento, finalmente definimos un 
+      espaciado en el eje-X
+  */
+  /*
+      flexbox_skins: definimos position: fixed y sus propiedades
+      top, right y z-index para posicionar este elemento, con 
+      flexbox con sus propiedades justify-content y align-items 
+      mas las propiedades width y height centramos de manera vertical 
+      y horizontal los elementos que este contiene 
+  */
+  /*
+      tag-main
+  */
+  /*
+      tag-footer
+  */
+}
+@media (max-width: 1199px) {
+  .container_box {
+    padding: 0 80px;
+  }
+}
+@media (max-width: 539px) {
+  .container_box {
+    padding: 0 25px;
+  }
+}
+.container_box header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9;
+  padding: 0 80px;
+  /*
+      cuando tag-header tiene la clase .js_header_scroll 
+      añadida con javascript modificamos el color de fondo
+      y añadimos una sombra
+  */
+  /*
+      dispositivos menores a 539px: modificamos el espaciado 
+      en el eje-X para esta medida
+  */
+  /*
+      header_container  
+  */
+}
+.container_box header.js_header_scroll {
+  background: linear-gradient(90deg, rgb(9, 6, 83) 50%, rgb(3, 4, 50) 100%);
+  box-shadow: 0 0 8px 0 #ccc;
+}
+@media (max-width: 539px) {
+  .container_box header {
+    padding: 0 25px;
+  }
+}
+.container_box header .header_container {
+  /*
+      header_flex: definimos flexbox y su propiedad 
+      align-items junto con una altura que me permite
+      centrar de manera vertical los elementos que este
+      contiene
+  */
+}
+.container_box header .header_container .header_flex {
+  display: flex;
+  height: 80px;
+  align-items: center;
+  /*
+      dispositivos mayores a 720px: definimos 
+      justify-content para generar un espaciado 
+      entre los elementos para esta medida 
+  */
+  /*
+      tag-nav
+  */
+  /*
+      brand_box
+  */
+}
+@media (min-width: 720px) {
+  .container_box header .header_container .header_flex {
+    justify-content: space-between;
+  }
+}
+.container_box header .header_container .header_flex nav {
+  /*
+      dispositivos menores a 719px: definimos 
+      position: absolute junto con sus propiedades 
+      top, left y right para posicionar este elemento. 
+      Tambien definimos un order: 2 para cambiar 
+      este elemento de posicion y una altura de 100vh 
+      para que tome toda la altura de la pantalla,
+      finalmente con la propiedad translateX a -1000px 
+      ocultamos el menu de navegacion
+  */
+  /*
+      tag-ul
+  */
+}
+@media (max-width: 719px) {
+  .container_box header .header_container .header_flex nav {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    order: 2;
+    height: 100vh;
+    transform: translateX(-1000px);
+    /*
+        js_show_menu: cuando tag-nav tiene esta clase añadida
+        desde javascript, añadimos un color de fondo y modificamos 
+        el translateX a 0 para hacer vsible el menu de navegacion
+    */
+  }
+  .container_box header .header_container .header_flex nav.js_show_menu {
+    background-color: #090653;
+    background: linear-gradient(90deg, rgb(9, 6, 83) 50%, rgb(3, 4, 50) 100%);
+    transform: translateX(0);
+  }
+}
+.container_box header .header_container .header_flex nav ul {
+  /*
+      dispositivos mayores a 720px: definimos 
+      flexbox para poner el linea los elementos
+      que este contiene
+  */
+  /*
+      dispositivos menores a 719px: definimos 
+      un espaciado personalizado en el eje-Y
+  */
+  /*
+      tag-li
+  */
+}
+@media (min-width: 720px) {
+  .container_box header .header_container .header_flex nav ul {
+    display: flex;
+  }
+}
+@media (max-width: 719px) {
+  .container_box header .header_container .header_flex nav ul {
+    text-align: center;
+    padding: 30px 0;
+  }
+}
+.container_box header .header_container .header_flex nav ul li {
+  list-style: none;
+  /*
+      dispositivos menores a 719px: definimos
+      un margen inferior para generar separacion
+      entre estos elementos
+  */
+  /*
+      dispositivos mayores a 720px: definimos
+      un margen derecho para generar separacion
+      entre estos elementos
+  */
+  /*
+      tag-a
+  */
+}
+@media (max-width: 719px) {
+  .container_box header .header_container .header_flex nav ul li {
+    margin-bottom: 22px;
+  }
+}
+@media (min-width: 720px) {
+  .container_box header .header_container .header_flex nav ul li {
+    margin-right: 22px;
+  }
+}
+.container_box header .header_container .header_flex nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  /*
+      cuando hacemos :hover sobre tag-a modificamos 
+      el color de la fuente
+  */
+  /*
+      js_active_link: cuando tag-a tiene 
+      esta clase añadida desde javascript, 
+      añadimos un color de fuente y un filtro 
+  */
+}
+.container_box header .header_container .header_flex nav ul li a:hover {
+  color: #ffc801;
+}
+.container_box header .header_container .header_flex nav ul li a.js_active_link {
+  color: #ffc801;
+  filter: drop-shadow(0 0 10px #ffc801);
+}
+.container_box header .header_container .header_flex .brand_box {
+  /*
+      dispositivos menores a 719px: definimos flexbox 
+      junto con su propiedad justify-content y un ancho 
+      para generar un espaciado entre los elementos para
+      esta medida, finalmente definimos un order: 1 para
+      cambiar este elemento de posicion
+  */
+  /*
+      tag-h2
+  */
+  /*
+      tag-svg
+  */
+}
+@media (max-width: 719px) {
+  .container_box header .header_container .header_flex .brand_box {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    order: 1;
+  }
+}
+.container_box header .header_container .header_flex .brand_box h2 {
+  color: #ffffff;
+  /*
+      tag-span
+  */
+}
+.container_box header .header_container .header_flex .brand_box h2 span {
+  color: #ffc801;
+  filter: drop-shadow(0 0 10px #ffc801);
+}
+.container_box header .header_container .header_flex .brand_box svg {
+  /*
+      dispositivos menores a 719px: definimos vertical-align: top 
+      para remover un espaciado que genera el navegador en los
+      iconos
+  */
+  /*
+      dispositivos mayores a 720px: definimos display: none 
+      para remover el icno del menu en esta medida
+  */
+}
+@media (max-width: 719px) {
+  .container_box header .header_container .header_flex .brand_box svg {
+    vertical-align: top;
+    fill: #ffc801;
+    filter: drop-shadow(0 0 10px #ffc801);
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+  }
+}
+@media (min-width: 720px) {
+  .container_box header .header_container .header_flex .brand_box svg {
+    display: none;
+  }
+}
+.container_box .skin_flex {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 8;
+  display: flex;
+  width: 50px;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  /*
+      dispositivos mayores a 1200px: modificamos el ancho del
+      este contenedor
+  */
+  /*
+      skin_box
+  */
+}
+@media (min-width: 1200px) {
+  .container_box .skin_flex {
+    width: 80px;
+  }
+}
+.container_box .skin_flex .skin_box {
+  /*
+      tag-span: definimos display: block junto a width y
+      height para hacer visibles los botones creados para
+      cambiar el color de fondo del sitio web 
+  */
+  /*
+      skin_dark: definimos un margen en la parte inferior para 
+      generar espaciado
+  */
+  /*
+      skin_light
+  */
+}
+.container_box .skin_flex .skin_box span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: transform 0.2s;
+  /*
+      cuando hacemos :hover sobre la tag-span, añadimos un
+      transform: scale para reducir el tamaño de la tag-span
+  */
+}
+.container_box .skin_flex .skin_box span:hover {
+  transform: scale(0.8);
+}
+.container_box .skin_flex .skin_box .skin_dark {
+  background: linear-gradient(90deg, rgb(9, 6, 83) 50%, rgb(3, 4, 50) 100%);
+  margin-bottom: 12px;
+}
+.container_box .skin_flex .skin_box .skin_light {
+  background-color: #ffffff;
+}
+.container_box main {
+  /*
+      main_container
+  */
+}
+.container_box main .main_container {
+  /*
+      main_flex
+  */
+}
+.container_box main .main_container .main_flex {
+  /*
+      dispositivos mayores a 1200px: definimos flexbox
+      junto con su propiedad alig-items para centrar
+      de manera vertical los elementos que este contiene,
+      finalmente definimos un margen superior para generar
+      sepacion
+  */
+  /*
+      banner_container
+  */
+  /*
+      box_img
+  */
+}
+@media (min-width: 1200px) {
+  .container_box main .main_container .main_flex {
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+  }
+}
+.container_box main .main_container .main_flex .banner_container {
+  color: #ffffff;
+  /*
+      dispositivos mayores a 720px y menores a 1199px: 
+      definimos un ancho maximos para este elemento
+  */
+  /*
+      dispositivos mayores a 1200px: definimos order: 1
+      para cambiar de posicion este elemento
+  */
+  /*
+      title_box: definimos psoition: relative debido a 
+      que uno de sus elementos hijos tiene definido 
+      position absolute, finalmente flexbox para poner 
+      en linea los elementos que este contiene
+  */
+  /*
+      tag-p: definimos un margen personalizados en 
+      el eje-Y para generar separacion
+  */
+  /*
+      btn_box
+  */
+}
+@media (min-width: 720px) and (max-width: 1199px) {
+  .container_box main .main_container .main_flex .banner_container {
+    max-width: 585px;
+  }
+}
+@media (min-width: 1200px) {
+  .container_box main .main_container .main_flex .banner_container {
+    order: 1;
+  }
+}
+.container_box main .main_container .main_flex .banner_container .title_box {
+  position: relative;
+  display: flex;
+  /*
+      tag-h1
+  */
+  /*
+      tag-img
+  */
+}
+.container_box main .main_container .main_flex .banner_container .title_box h1 {
+  font-size: 54px;
+  letter-spacing: 0.7px;
+  font-weight: 800;
+  /*
+      dispositivos menores a 467px: modificamos 
+      el tamaño de fuente
+  */
+  /*
+      dispositivos menores a 467px: modificamos 
+      el tamaño de fuente
+  */
+}
+@media (max-width: 577px) {
+  .container_box main .main_container .main_flex .banner_container .title_box h1 {
+    font-size: 46px;
+  }
+}
+@media (max-width: 408px) {
+  .container_box main .main_container .main_flex .banner_container .title_box h1 {
+    font-size: 31px;
+  }
+}
+.container_box main .main_container .main_flex .banner_container .title_box img {
+  /*
+      dispositivos menores a 749px: definimos
+      display: none para remover la imagen de la vista
+  */
+  /*
+      dispositivos mayores a 1200px y menores a 1265px: 
+      definimos display: none para remover la imagen de la vista
+  */
+  /*
+      dispositivos mayores a 720px: definimos
+      position: absolute junto con sus propiedades 
+      top y right para posicionar este elemento
+  */
+}
+@media (max-width: 749px) {
+  .container_box main .main_container .main_flex .banner_container .title_box img {
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1365px) {
+  .container_box main .main_container .main_flex .banner_container .title_box img {
+    display: none;
+  }
+}
+@media (min-width: 720px) {
+  .container_box main .main_container .main_flex .banner_container .title_box img {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    filter: drop-shadow(0 0 5px #ffffff);
+    width: 160px;
+    height: 160px;
+    -webkit-animation: postmanFloat 2s infinite linear;
+            animation: postmanFloat 2s infinite linear;
+    /*
+        definimos una animacion que se encarga de 
+        transladar levemente la imagen
+    */
+  }
+  @-webkit-keyframes postmanFloat {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes postmanFloat {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+.container_box main .main_container .main_flex .banner_container p {
+  font-size: 24px;
+  line-height: 1.4;
+  margin: 24px 0 54px;
+  /*
+      dispositivos menores a 467px: modificamos 
+      el tamaño de fuente
+  */
+}
+@media (max-width: 467px) {
+  .container_box main .main_container .main_flex .banner_container p {
+    font-size: 21px;
+  }
+}
+.container_box main .main_container .main_flex .banner_container .btn_box {
+  /*
+      tag-a: para convertir un enlace en un boton, 
+      es importante definirle un display: inline-flex 
+      mas las propiedades width, justify-content, height 
+      y  align-items. Estos dan tamaño al boton y  
+      centran su contenido
+  */
+}
+.container_box main .main_container .main_flex .banner_container .btn_box a {
+  text-decoration: none;
+  display: inline-flex;
+  width: 240px;
+  justify-content: space-evenly;
+  height: 55px;
+  align-items: center;
+  background-color: #ffc801;
+  filter: drop-shadow(0 0 10px #ffc801);
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 30px;
+  /*
+      cuando hacemos :hover sobre tag-a
+      modificamos su color de fondo
+  */
+  /*
+      tag-svg: definimmos un vertical-align para remover 
+      un espaciado que genera el navegador en los iconos
+  */
+}
+.container_box main .main_container .main_flex .banner_container .btn_box a:hover {
+  background-color: rgb(245, 180, 0);
+}
+.container_box main .main_container .main_flex .banner_container .btn_box a svg {
+  vertical-align: top;
+  fill: #ffffff;
+  width: 26px;
+  height: 26px;
+}
+.container_box main .main_container .main_flex .img_box {
+  text-align: center;
+  /*
+      dispositivos menores a 1199px: definimos margen 
+      personalizado en el eje-Y para generar separacion
+  */
+  /*
+      dispositivos mayores a 1200px: definimos order: 2
+      para cambiar de posicion este elemento
+  */
+  /*
+      tag-img: definimos vertical-align: top para remover
+      un espaciado que genera el navegador en las imagenes,
+      finalmente definimos la propiedad object-fit: cover 
+      para ajustar la imagen a su contenedor padre
+  */
+}
+@media (max-width: 1199px) {
+  .container_box main .main_container .main_flex .img_box {
+    margin: 100px 0 50px;
+  }
+}
+@media (min-width: 1200px) {
+  .container_box main .main_container .main_flex .img_box {
+    order: 2;
+  }
+}
+.container_box main .main_container .main_flex .img_box img {
+  vertical-align: top;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 460px;
+  height: 100%;
+  /*
+      dispositivos menores a 749px: definimos una animacion 
+      que se encarga de transladar levemente la imagen
+  */
+  /*
+      dispositivos menores a 719px: modficamos el ancho
+      de la imagen para esta medida
+  */
+  /*
+      dispositivos mayores a 750px: definimos una animacion 
+      que se encarga de rotar levemente la imagen
+  */
+}
+@media (max-width: 749px) {
+  .container_box main .main_container .main_flex .img_box img {
+    -webkit-animation: rocketFly2 2s infinite linear;
+            animation: rocketFly2 2s infinite linear;
+  }
+  @-webkit-keyframes rocketFly2 {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes rocketFly2 {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+@media (max-width: 719px) {
+  .container_box main .main_container .main_flex .img_box img {
+    width: 100%;
+  }
+}
+@media (min-width: 750px) {
+  .container_box main .main_container .main_flex .img_box img {
+    -webkit-animation: rocketFly 8s infinite linear;
+            animation: rocketFly 8s infinite linear;
+  }
+  @-webkit-keyframes rocketFly {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(10deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes rocketFly {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(10deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+.container_box footer {
+  text-align: center;
+  /*
+      dispositivos menores a 1199px: definimos un espaciado 
+      personalizado en el eje-Y para generar espaciado
+  */
+  /*
+      icon_box: definimos un margen inferior para generar espaciado
+  */
+  /*
+      tag-p
+  */
+}
+@media (max-width: 1199px) {
+  .container_box footer {
+    padding: 100px 0 30px;
+  }
+}
+.container_box footer .icon_box {
+  text-align: center;
+  margin-bottom: 12px;
+  /*
+      dispositivos menores a 1199px: modificamos el margen inferior
+  */
+  /*
+      tag-a: definimos un margen para generar espaciado
+  */
+}
+@media (max-width: 1199px) {
+  .container_box footer .icon_box {
+    margin-bottom: 22px;
+  }
+}
+.container_box footer .icon_box a {
+  text-decoration: none;
+  margin: 6px;
+  /*
+      tag-svg: definimmos un vertical-align para remover 
+      un espaciado que genera el navegador en los iconos
+  */
+}
+.container_box footer .icon_box a svg {
+  vertical-align: top;
+  fill: #ffffff;
+  width: 28px;
+  height: 28px;
+  /*
+      cuando hacemos :hover sobre tag-svg modificamos 
+      el color de fondo y añadimos un filtro
+  */
+}
+.container_box footer .icon_box a svg:hover {
+  fill: #ffc801;
+  filter: drop-shadow(0 0 4px #ffc801);
+}
+.container_box footer p {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
+  /*
+      dispositivos menores a 585px: definimos un ancho 
+      maximo y un margen auto para centrar este elemento 
+      de manera horizontal
+  */
+}
+@media (max-width: 585px) {
+  .container_box footer p {
+    max-width: 300px;
+    margin: auto;
+  }
+}/*# sourceMappingURL=style.css.map */
