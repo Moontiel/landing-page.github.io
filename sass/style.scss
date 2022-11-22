@@ -26,7 +26,6 @@ body {
     background-color: $bgPrimaryColor;
     background: $bgPrimaryBodyColor;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
 
     /*
         js_skin_light: cuando tag-body tiene esta clase añadida 
@@ -423,19 +422,30 @@ body {
         */
         .main_container {
             /*
-                main_flex
+                main_flex: definimos flexbox junto a sus propiedades 
+                align-items y justify-content con una altura minima
+                para centrar de manera vertical y horizontal los elementos 
+                que este contiene
             */
             .main_flex {
+                display: flex;
+                justify-content: center;
+                min-height: 100vh;
+                align-items: center;
+
                 /*
-                    dispositivos mayores a 1200px: definimos flexbox
-                    junto con su propiedad alig-items para centrar
-                    de manera vertical los elementos que este contiene,
-                    finalmente definimos un margen superior para generar
-                    sepacion
+                    dispositivos menores a 1199px: pasamos de linea a bloque
+                    los elementos
+                */
+                @media (max-width: 1199px) {
+                    flex-direction: column;
+                }
+
+                /*
+                    dispositivos mayores a 1200px: definimos un margen superior 
+                    para generar sepacion
                 */
                 @media (min-width: 1200px) {
-                    display: flex;
-                    align-items: center;
                     margin-top: 80px;
                 }
 
@@ -450,7 +460,7 @@ body {
                         definimos un ancho maximos para este elemento
                     */
                     @media (min-width: 720px) and (max-width: 1199px) {
-                        max-width: 585px;
+                        max-width: 630px;
                     }
 
                     /*
@@ -709,17 +719,17 @@ body {
     }
 
     /*
-        tag-footer
+        tag-footer: definimos un espaciado inferior para generar espaciado
     */
     footer {
         text-align: center;
+        padding-bottom: 30px;
 
         /*
-            dispositivos menores a 1199px: definimos un espaciado 
-            personalizado en el eje-Y para generar espaciado
+            dispositivos menores a 1199px: definimos un margen superior
         */
         @media (max-width: 1199px) {
-            padding: 100px 0 30px;
+            margin-top: 100px;
         }
 
         /*
@@ -779,7 +789,7 @@ body {
                 de manera horizontal
             */
             @media (max-width: 585px) {
-                max-width: 300px;
+                max-width: 250px;
                 margin: auto;
             }
         }
