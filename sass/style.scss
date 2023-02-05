@@ -36,18 +36,18 @@ body {
     &.js_skin_light {
         background: $bgSecondaryBodyColor;
 
-        .container_box header {
+        .container_main header {
             &.js_header_scroll {
                 background: $bgTertiaryColor;
-                // box-shadow: 0 0 8px 0 #ccc;
+                box-shadow: 0 0 8px 0 #ccc;
             }
         }
 
-        .container_box header .header_container .header_flex nav.js_show_menu {
+        .container_main header .header_container .header_flex nav.js_show_menu {
             background: $bgTertiaryColor;
         }
 
-        .container_box header .header_container .header_flex nav ul li a {
+        .container_main header .header_container .header_flex nav ul li a {
             color: $textSecondaryColor;
 
             &:hover {
@@ -59,15 +59,15 @@ body {
             }
         }
 
-        .container_box header .header_container .header_flex .brand_box h2 {
+        .container_main header .header_container .header_flex .brand_box h2 {
             color: $textSecondaryColor;
         }
 
-        .container_box main .main_container .main_flex .banner_container {
+        .container_main main .main_container .main_flex .banner_container {
             color: $textSecondaryColor;
         }
 
-        .container_box footer .icon_box a svg {
+        .container_main footer .icon_box a svg {
             fill: $textSecondaryColor;
 
             &:hover {
@@ -75,18 +75,18 @@ body {
             }
         }
 
-        .container_box footer p {
+        .container_main footer p {
             color: $textSecondaryColor;
         }
     }
 }
 
 /*
-    container_box: definimos un espaciado en el eje-X 
+    container_main: definimos un espaciado en el eje-X 
     para separar este contenedor de los bordes de la 
     ventana
 */
-.container_box {
+.container_main {
     padding: 0 160px;
 
     /*
@@ -119,7 +119,7 @@ body {
         right: 0;
         top: 0;
         z-index: 9;
-        padding: 0 80px;
+        padding: 0 160px;
 
         /*
             cuando tag-header tiene la clase .js_header_scroll 
@@ -128,7 +128,16 @@ body {
         */
         &.js_header_scroll {
             background: $bgPrimaryBodyColor;
-            box-shadow: 0 0 8px 0 #ccc;
+            box-shadow: 0 0 8px 0 #212121ac;
+        }
+
+        /*
+            dispositivos menores a 1199px: modificamos el 
+            espaciado en el eje-X de este elemento para 
+            esta medida
+        */
+        @media (max-width: 1199px) {
+            padding: 0 80px;
         }
 
         /*
@@ -185,6 +194,7 @@ body {
                         order: 2;
                         height: 100vh;
                         transform: translateX(-1000px);
+                        transition: 0.5s;
 
                         /*
                             js_show_menu: cuando tag-nav tiene esta clase añadida
@@ -422,16 +432,15 @@ body {
         */
         .main_container {
             /*
-                main_flex: definimos flexbox junto a sus propiedades 
-                align-items y justify-content con una altura minima
-                para centrar de manera vertical y horizontal los elementos 
-                que este contiene
+                main_flex: definimos flexbox junto a su propiedad 
+                justify-content con una altura minima para centrar de manera 
+                vertical y horizontal dependinedo de la flex-direction los 
+                elementos que este contiene
             */
             .main_flex {
                 display: flex;
                 justify-content: center;
                 min-height: 100vh;
-                align-items: center;
 
                 /*
                     dispositivos menores a 1199px: pasamos de linea a bloque
@@ -442,10 +451,12 @@ body {
                 }
 
                 /*
-                    dispositivos mayores a 1200px: definimos un margen superior 
-                    para generar sepacion
+                    dispositivos mayores a 1200px: definimos align-items para
+                    centrar de manera vertical los elementos que este contiene 
+                    y un margen superior para generar sepacion
                 */
                 @media (min-width: 1200px) {
+                    align-items: center;
                     margin-top: 80px;
                 }
 
@@ -456,10 +467,10 @@ body {
                     color: $textPrimaryColor;
 
                     /*
-                        dispositivos mayores a 720px y menores a 1199px: 
+                        dispositivos mayores a 981px y menores a 1199px: 
                         definimos un ancho maximos para este elemento
                     */
-                    @media (min-width: 720px) and (max-width: 1199px) {
+                    @media (min-width: 981px) and (max-width: 1199px) {
                         max-width: 630px;
                     }
 
@@ -507,37 +518,26 @@ body {
                         }
 
                         /*
-                            tag-img
+                            tag-img: definimos display: none para remover la 
+                            imagen de la vista
                         */
                         img {
-                            /*
-                                dispositivos menores a 749px: definimos
-                                display: none para remover la imagen de la vista
-                            */
-                            @media (max-width: 749px) {
-                                display: none;
-                            }
+                            display: none;
 
                             /*
-                                dispositivos mayores a 1200px y menores a 1265px: 
-                                definimos display: none para remover la imagen de la vista
+                                dispositivos mayores a 981px y menores a 1199px: 
+                                definimos display: block para hacer visible la 
+                                imagen, con position: absolute y sus propiedades 
+                                top y right posicionamos este elemento
                             */
-                            @media (min-width: 1200px) and (max-width: 1365px) {
-                                display: none;
-                            }
-
-                            /*
-                                dispositivos mayores a 720px: definimos
-                                position: absolute junto con sus propiedades 
-                                top y right para posicionar este elemento
-                            */
-                            @media (min-width: 720px) {
+                            @media (min-width: 981px) and (max-width: 1199px) {
+                                display: block;
                                 position: absolute;
-                                top: -48px;
-                                right: 0;
+                                top: 0px;
+                                right: -200px;
                                 filter: drop-shadow(0 0 5px $bgTertiaryColor);
-                                width: 160px;
-                                height: 160px;
+                                width: 200px;
+                                height: 200px;
                                 animation: postmanFloat 2s infinite linear;
 
                                 /*
@@ -636,7 +636,8 @@ body {
                         personalizado en el eje-Y para generar separacion
                     */
                     @media (max-width: 1199px) {
-                        margin: 100px 0 50px;
+                        margin: 80px 0 50px;
+                        overflow: hidden;
                     }
 
                     /*
@@ -709,6 +710,103 @@ body {
                                 }
                                 100% {
                                     transform: rotate(0deg);
+                                }
+                            }
+                        }
+                    }
+
+                    /*
+                        bubbles_container: definimos position: relative debido a que
+                        uno de sus elementos hijos tiene definido position: absolute
+                    */
+                    .bubbles_container {
+                        position: relative;
+                        transform: rotateZ(15deg);
+
+                        /*
+                            bubbles_box: definimos position: absolute junto con sus 
+                            propiedades top, left y z-index para posicionar los elementos
+                        */
+                        .bubbles_box {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            background-color: #5f91ff;
+                            background: linear-gradient(
+                                -45deg,
+                                #5f91ff,
+                                rgba(0, 0, 255, 0)
+                            );
+                            filter: drop-shadow(0 0 6px #699bff);
+                            animation: tail 1.2s ease-in-out infinite,
+                                shooting 1.2s ease-in-out infinite;
+
+                            /*
+                                haciendo uso del pseudo elemento :nth-child()
+                                selecionamos cada uno de los elementos bubbles_box
+                                para darle diferentes posiciones a cada elemento
+                            */
+                            &:nth-child(1) {
+                                top: calc(100% - 100px);
+                                left: calc(50% - 230px);
+                                height: 2.5px;
+                            }
+
+                            &:nth-child(2) {
+                                top: calc(100% - 290px);
+                                left: calc(50% - 320px);
+                                height: 2.5px;
+                                animation-delay: 650ms;
+
+                                &::before,
+                                &::after {
+                                    animation-delay: 650ms;
+                                }
+                            }
+
+                            &:nth-child(3) {
+                                top: calc(100% - 190px);
+                                left: calc(50% - 150px);
+                                height: 1.5px;
+                                animation-delay: 925ms;
+
+                                &::before,
+                                &::after {
+                                    animation-delay: 925ms;
+                                }
+                            }
+
+                            &:nth-child(4) {
+                                top: calc(100% - 400px);
+                                left: calc(50% - 150px);
+                                height: 2px;
+                                animation-delay: 250ms;
+
+                                &::before,
+                                &::after {
+                                    animation-delay: 250ms;
+                                }
+                            }
+
+                            @keyframes tail {
+                                0% {
+                                    width: 0;
+                                }
+                                30% {
+                                    width: 50px;
+                                }
+                                100% {
+                                    width: 0;
+                                }
+                            }
+
+                            @keyframes shooting {
+                                0% {
+                                    transform: translateX(0);
+                                }
+
+                                100% {
+                                    transform: translateX(250px);
                                 }
                             }
                         }

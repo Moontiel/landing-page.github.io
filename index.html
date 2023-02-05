@@ -5,57 +5,50 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Landin Page</title>
+        <!--  
+            definicion de estilos css
+        -->
         <link rel="stylesheet" href="./sass/style.css" />
     </head>
     <body>
         <!--  
-            bubbles_container: contenedor de 5
-            bubbles_box
+            container_main: contenedor de 1 tag-header, de 
+            skin_flex, 1 tag-main y 1 tag-footer
         -->
-        <div class="bubbles_container">
-            <!--    
-                bubbles_box: contenedor de 1 tag-span
+        <div class="container_main">
+            <!--  
+                tag-header: contenedor de header_container, le
+                definimos un ID para implementar este elemento
+                en javascript
             -->
-            <div class="bubbles_box">
-                <!--      
-                    tag-span: estas las utilizamos para crear 
-                    los elementos que sirven como background
-                -->
-                <span></span>
-            </div>
-
-            <div class="bubbles_box">
-                <span></span>
-            </div>
-
-            <div class="bubbles_box">
-                <span></span>
-            </div>
-
-            <div class="bubbles_box">
-                <span></span>
-            </div>
-
-            <div class="bubbles_box">
-                <span></span>
-            </div>
-
-            <div class="bubbles_box">
-                <span></span>
-            </div>
-
-            <div class="bubbles_box">
-                <span></span>
-            </div>
-        </div>
-
-        <div class="container_box">
             <header id="header-scroll">
+                <!--  
+                    header_container: contenedor de header_flex
+                -->
                 <div class="header_container">
+                    <!--  
+                        header_flex: contenedor definido para implementar 
+                        flexbox o grid si la seccion lo requiere
+                    -->
                     <div class="header_flex">
+                        <!--  
+                            tag-nav: contenedor de 1 tag-nav, le definimos
+                            un ID para implementar este elemento en javascript
+                        -->
                         <nav id="nav-menu">
+                            <!--  
+                                tag-ul: contenedor de 4 tags-li
+                            -->
                             <ul>
+                                <!--  
+                                    tag-li: contiene una tag-a
+                                -->
                                 <li>
+                                    <!--  
+                                        tag-a: en esta definimos el enlace del 
+                                        menu, la clase js_active_link es 
+                                        implementada en javascript
+                                    -->
                                     <a href="#" class="js_active_link">Home</a>
                                 </li>
 
@@ -67,9 +60,19 @@
                             </ul>
                         </nav>
 
+                        <!--  
+                            brand_box: contenedor de 1 tag-h2 y 1 tag-svg
+                        -->
                         <section class="brand_box">
+                            <!--  
+                                tag-h2: en esta definimos el titulo del logo
+                            -->
                             <h2>JS<span> Dev</span></h2>
 
+                            <!--  
+                                tag-svg: en esta definimos el icono del 
+                                menu de navegacion
+                            -->
                             <svg viewBox="0 0 24 24" id="icon-menu">
                                 <path
                                     d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
@@ -81,8 +84,8 @@
             </header>
 
             <!--  
-                skin_flex: contenedor definido para implementar flexbox
-                o grid si la seccion lo requiere
+                skin_flex: contenedor definido para implementar 
+                flexbox o grid si la seccion lo requiere
             -->
             <div class="skin_flex">
                 <!--  
@@ -99,7 +102,13 @@
                 </div>
             </div>
 
+            <!--  
+                tag-main: contenedor de main_container
+            -->
             <main>
+                <!--  
+                    main_container: contenedor de main_flex
+                -->
                 <div class="main_container">
                     <!--  
                         main_flex: definido para implementar 
@@ -111,42 +120,85 @@
                         -->
                         <div class="img_box">
                             <!--
-                                    tag-img: en esta definimos una imagen
-                                -->
+                                tag-img: en esta definimos una imagen
+                            -->
                             <img
                                 src="./assets/img/cohete1.png"
-                                alt="imagen animada del banner"
+                                alt="imagen banner rocket"
                             />
+
+                            <!--  
+                                bubbles_container: contenedor de 4
+                                bubbles_box
+                            -->
+                            <div class="bubbles_container">
+                                <!--    
+                                    bubbles_box: definido para crear el efecto 
+                                    de estrellas fugacez
+                                -->
+                                <div class="bubbles_box"></div>
+
+                                <div class="bubbles_box"></div>
+
+                                <div class="bubbles_box"></div>
+
+                                <div class="bubbles_box"></div>
+                            </div>
                         </div>
 
                         <!--
-                            banner_container: contenedor de 1 tag-form,
-                            este contenedor es importante para el centrado
-                            del formulario
+                            banner_container: contenedor de title_box,
+                            1 tag-p y de btn_box
                         -->
                         <div class="banner_container">
+                            <!--  
+                                title_box: contenedor de 1 tag-h1 y de 
+                                1 tag-img
+                            -->
                             <section class="title_box">
+                                <!--  
+                                    tag-h1: en esta definimos el titulo 
+                                    del banner
+                                -->
                                 <h1>Portafolio Web</h1>
 
+                                <!--  
+                                    tag-img: en esta definimos la imagen 
+                                    para el titulo del banner
+                                -->
                                 <img
                                     class="img_postman"
                                     src="./assets/img/astronauta3.png"
-                                    alt="imagen animada del banner"
+                                    alt="imagen banner possman"
                                 />
                             </section>
 
+                            <!--  
+                                tag-p: en esta definimos el parrafo para el
+                                banner
+                            -->
                             <p>
                                 ¡Hola! si deseas conocer mas acerca de mi y de
                                 mi labor como desarrollador frontend, haz clic
                                 en el boton.
                             </p>
 
+                            <!--  
+                                btn_box: contenedor de 1 tag-a
+                            -->
                             <div class="btn_box">
-                                <a href="#">
+                                <!--  
+                                    tag-a: contenedor de 1 tag-svg
+                                -->
+                                <a
+                                    href="https://testing-deploy-vercel-umber.vercel.app/"
+                                    target="_blank"
+                                >
                                     Ver Portafolio
 
                                     <!--  
-                                        svg: icono definido dentro de la tag-a
+                                        tag-svg: en esta definimos el icono
+                                        para al boton
                                     -->
                                     <svg viewBox="0 0 24 24">
                                         <path
@@ -170,9 +222,22 @@
                 </div>
             </main>
 
+            <!--  
+                tag-footer: contenedor de icon_box y 1 tag-p
+            -->
             <footer>
+                <!--  
+                    icon_box: contenedor de 4 tags-a
+                -->
                 <div class="icon_box">
-                    <a href="#">
+                    <!--  
+                        tag-a: en esta definimos los iconos de redes
+                        sociales
+                    -->
+                    <a
+                        href="https://www.linkedin.com/in/jefferson-salazar-032870174/"
+                        target="_blank"
+                    >
                         <svg viewBox="0 0 24 24">
                             <circle cx="4.983" cy="5.009" r="2.188"></circle>
                             <path
@@ -181,7 +246,10 @@
                         </svg>
                     </a>
 
-                    <a href="#">
+                    <a
+                        href="https://github.com/JeffersonSalazar?tab=repositories"
+                        target="_blank"
+                    >
                         <svg viewBox="0 0 24 24">
                             <path
                                 fill-rule="evenodd"
@@ -191,7 +259,7 @@
                         </svg>
                     </a>
 
-                    <a href="#">
+                    <a href="https://wa.me/+0573215142379" target="_blank">
                         <svg viewBox="0 0 24 24">
                             <path
                                 fill-rule="evenodd"
@@ -201,7 +269,7 @@
                         </svg>
                     </a>
 
-                    <a href="">
+                    <a href="mailto:salazarjefferson0210@gmail.com">
                         <svg viewBox="0 0 24 24">
                             <path
                                 d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"
@@ -210,10 +278,17 @@
                     </a>
                 </div>
 
+                <!--  
+                    tag-p: en esta definimos informacion sobre el 
+                    desarrollador
+                -->
                 <p>&copy; Creado y diseñado por Jefferson Salazar</p>
             </footer>
         </div>
 
+        <!--  
+            custom javascript
+        -->
         <script src="./js/main.js"></script>
     </body>
 </html>
